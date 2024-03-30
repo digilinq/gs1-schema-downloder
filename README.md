@@ -22,14 +22,16 @@ mvn com.eightbits.commerce.retail:gs1-schema-downloader:download-gs1-schema -Dgs
 <plugin>
     <groupId>com.eightbits.commerce.retail</groupId>
     <artifactId>gs1-schema-downloader</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.3-SNAPSHOT</version>
     <executions>
         <execution>
-            <id>download-gs1-schema</id>
-            <phase>generate-resources</phase>
             <goals>
                 <goal>download-gs1-schema</goal>
             </goals>
+            <configuration>
+                <gs1SchemaUrl>http://www.gdsregistry.org/3.1/schemas/</gs1SchemaUrl>
+                <outputDirectory>${project.basedir}/src/main/resources/gs1-schema</outputDirectory>
+            </configuration>
         </execution>
     </executions>
 </plugin>
