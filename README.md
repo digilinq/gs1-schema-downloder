@@ -49,3 +49,14 @@ The plugin will download the GS1 schema from the provided URL and save it in the
 outputDirectory
 ├── gs1-schema.json
 ``` 
+
+## Debugging Maven Plugin
+```shell
+mvnDebug com.eightbits.commerce.retail:gs1-schema-downloader:download-gs1-schema
+```
+If you are building custom plugins, you need to be able to debug them. It’s perhaps not always immediately clear how to do this. After all, developers don’t simply start a Mojo via the IDE; they have to connect to the actual mvn command in some way. Luckily Maven has a default solution for this, namely the mvnDebug command. This command suspends execution right after invocation so you can attach a remote debugger to a port. By default, that port is 8000, as shown the following output:
+
+```text
+Preparing to execute Maven in debug mode
+Listening for transport dt_socket at address: 8000
+``` 
