@@ -66,7 +66,7 @@ public class GS1SchemaDownloader extends AbstractMojo {
             getLog().info("Writing file: " + path.toAbsolutePath());
 
             Files.createDirectories(path.getParent());
-            Files.write(path, content, StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+            Files.write(path, content, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
         } catch (IOException e) {
             getLog().error("Error downloading: " + extractFileName(url), e);
         }
