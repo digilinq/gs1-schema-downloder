@@ -27,6 +27,9 @@ public class GS1SchemaDownloader extends AbstractMojo {
     @Parameter(property = "outputDirectory", defaultValue = "target/generated-sources/xsd")
     private String outputDirectory;
 
+    @Parameter(property = "enable", defaultValue = "true")
+    private boolean enable;
+
     @Parameter(defaultValue = "${project}", required = true, readonly = true)
     MavenProject project;
 
@@ -59,6 +62,10 @@ public class GS1SchemaDownloader extends AbstractMojo {
     }
 
     void downloadXsdFile(String url) {
+        if (!enable) {
+            getLog().info("Skipping download: " + url);
+            return;
+        }
         getLog().info("Downloading: " + url);
         try {
             byte[] content = Jsoup.connect(url).ignoreContentType(true).execute().bodyAsBytes();
